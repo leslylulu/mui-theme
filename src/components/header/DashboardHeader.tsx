@@ -13,7 +13,8 @@ import {
 	Avatar,
 	ListItemIcon,
 	Divider,
-	useTheme
+	useTheme,
+	Paper
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -57,26 +58,15 @@ export default function DashboardHeader({
 	};
 
 	return (
-		<AppBar
-			position="fixed"
-			color="inherit"
+		<Paper
 			elevation={1}
 			sx={{
-				zIndex: (theme) => theme.zIndex.drawer + 1,
-				bgcolor: theme.palette.background.paper
+				width: '100%', 
+				bgcolor: theme.palette.background.paper,
+				borderRadius: 16, 
 			}}
 		>
-			<Toolbar>
-				<IconButton
-					size="large"
-					edge="start"
-					color="inherit"
-					aria-label="toggle sidebar"
-					onClick={onToggleSidebar}
-					sx={{ mr: 2 }}
-				>
-					<MenuIcon />
-				</IconButton>
+			<Toolbar sx={{ px: 2 }}>
 
 				<Typography
 					variant="h6"
@@ -170,6 +160,6 @@ export default function DashboardHeader({
 					</Menu>
 				</Box>
 			</Toolbar>
-		</AppBar>
+		</Paper>
 	);
 }

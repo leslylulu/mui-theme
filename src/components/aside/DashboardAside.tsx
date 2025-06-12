@@ -15,17 +15,14 @@ import {
 	Chip,
 	useTheme
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-
-// Icons
-import HomeIcon from '@mui/icons-material/Home';
-import PersonIcon from '@mui/icons-material/Person';
-import SettingsIcon from '@mui/icons-material/Settings';
-import DashboardIcon from '@mui/icons-material/Dashboard';
+import { DatasetOutlined } from '@mui/icons-material';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import PieChartOutline from '@mui/icons-material/PieChartOutline';
 import SecurityIcon from '@mui/icons-material/Security';
-import TableChartIcon from '@mui/icons-material/TableChart';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import ArticleIcon from '@mui/icons-material/Article';
@@ -33,8 +30,8 @@ import HelpIcon from '@mui/icons-material/Help';
 import CodeIcon from '@mui/icons-material/Code';
 import EmailIcon from '@mui/icons-material/Email';
 
-// 抽屉宽度
 const drawerWidth = 280;
+const collapsedDrawerWidth = 80;
 
 interface MenuItemType {
 	title: string;
@@ -52,28 +49,59 @@ interface MenuSectionType {
 	items: MenuItemType[];
 }
 
-// 样式化组件
-const MenuSectionTitle = styled(Typography)(({ theme }) => ({
-	fontSize: '0.75rem',
-	fontWeight: 600,
-	letterSpacing: '0.1rem',
-	textTransform: 'uppercase',
-	padding: theme.spacing(2, 3),
-	color: theme.palette.text.secondary,
-}));
+const MenuSectionTitle = ({children, open}: {children: React.ReactNode; open?: boolean}) => {
 
-export default function DashboardAside({
-	open = true,
-	onClose,
-	variant = 'permanent'
-}: {
-	open?: boolean;
-	onClose?: () => void;
-	variant?: 'permanent' | 'persistent' | 'temporary';
-}) {
+	const theme = useTheme();
+	if(!open) {
+		return null;
+	}
+	return(
+		<Box sx={{
+			position: 'relative',
+			padding: theme.spacing(2,3),
+		}}>
+			<Divider sx={{
+				position: 'absolute',
+				top: '50%',
+				left: 0,
+				right: 0,
+				transform: 'translateY(-50%)',
+			}} />
+			<Typography variant="subtitle2" sx={{
+				position: 'relative',
+				display: 'inline-block',
+				bgcolor: theme.palette.background.paper,
+				color: theme.palette.text.secondary,
+				fontWeight: 300,
+				fontSize: '0.75rem',
+				letterSpacing: '0.1rem',
+				textTransform: 'uppercase',
+				px: 1,
+				ml: 2, 
+			}}>
+				{children}
+			</Typography>
+		</Box>
+	);
+}
+
+export default function DashboardAside() {
+
 	const theme = useTheme();
 	const pathname = usePathname();
+	const [open, setOpen] = useState(true);
 	const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({});
+
+	const toggleSidebar = () => {
+		setOpen(prev => !prev);
+	}
+
+	const handleClose = () => {
+		setOpen(false);
+	};
+
+	const drawerVariant = 'permanent';
+	
 
 	const menuSections: MenuSectionType[] = [
 		{
@@ -82,17 +110,17 @@ export default function DashboardAside({
 				{
 					title: 'Dashboard',
 					path: '/dashboard',
-					icon: <DashboardIcon />,
+					icon: <PieChartOutline />,
 					chip: {
 						label: '5',
 						color: 'error'
 					}
 				},
 				{
-					title: 'Account Settings',
-					path: '/dashboard/account',
-					icon: <PersonIcon />
-				},
+					title: 'Tables',
+					path: '/table',
+					icon: <DatasetOutlined />
+				}
 			]
 		},
 		{
@@ -129,11 +157,7 @@ export default function DashboardAside({
 						{ title: 'Form Elements', path: '/dashboard/forms/elements' }
 					]
 				},
-				{
-					title: 'Tables',
-					path: '/dashboard/tables',
-					icon: <TableChartIcon />
-				}
+				
 			]
 		},
 		{
@@ -157,7 +181,6 @@ export default function DashboardAside({
 		}
 	];
 
-	// 处理菜单点击
 	const handleMenuClick = (title: string) => {
 		setOpenMenus(prev => ({
 			...prev,
@@ -165,7 +188,6 @@ export default function DashboardAside({
 		}));
 	};
 
-	// 初始化打开当前路径的父菜单
 	useEffect(() => {
 		const initOpenMenus: Record<string, boolean> = {};
 
@@ -190,13 +212,11 @@ export default function DashboardAside({
 		setOpenMenus(initOpenMenus);
 	}, [pathname]);
 
-	// 渲染菜单项
 	const renderMenuItems = (items: MenuItemType[]) => {
 		return items.map((item, index) => {
 			const isSelected = item.path && pathname === item.path;
 			const hasChildren = item.children && item.children.length > 0;
-			const isOpen = openMenus[item.title] || false;
-
+			const isMenuOpen = openMenus[item.title] || false; 
 			return (
 				<div key={`${item.title}-${index}`}>
 					<ListItem disablePadding>
@@ -204,70 +224,83 @@ export default function DashboardAside({
 							<ListItemButton
 								onClick={() => handleMenuClick(item.title)}
 								sx={{
-									pl: 3,
-									pr: 2,
-									py: 1,
-									bgcolor: isOpen ? 'action.selected' : 'transparent',
+									justifyContent: open ? 'flex-start' : 'center',
+									bgcolor: isMenuOpen ? 'action.selected' : 'transparent',
 								}}
 							>
-								{item.icon && <ListItemIcon sx={{ minWidth: 40 }}>{item.icon}</ListItemIcon>}
-								<ListItemText
-									primary={item.title}
-									primaryTypographyProps={{
-										fontSize: '0.875rem',
-										fontWeight: 500
-									}}
-								/>
-								{item.chip && (
-									<Chip
-										label={item.chip.label}
-										color={item.chip.color}
-										size="small"
-										sx={{ ml: 1, height: 20 }}
-									/>
+								{item.icon && <ListItemIcon 
+									sx={{
+										minWidth: open ? 40 : 'auto',
+										justifyContent: 'center'
+									}}>
+										{item.icon}
+									</ListItemIcon>
+									}
+								{open && (
+									<>
+										<ListItemText
+											primary={item.title}
+											sx={{
+												fontSize: '0.875rem',
+												fontWeight: 500
+											}}
+										/>
+										{item.chip && (
+											<Chip
+												label={item.chip.label}
+												color={item.chip.color}
+												size="small"
+												sx={{ height: 20 }}
+											/>
+										)}
+										{isMenuOpen ? <ExpandLess /> : <ExpandMore />}
+									</>
 								)}
-								{isOpen ? <ExpandLess /> : <ExpandMore />}
 							</ListItemButton>
 						) : (
 							<ListItemButton
 								component={Link}
 								href={item.path || '#'}
 								sx={{
-									pl: 3,
-									pr: 2,
-									py: 1,
-									bgcolor: isSelected ? 'action.selected' : 'transparent',
-									borderRight: isSelected ? `3px solid ${theme.palette.primary.main}` : 'none',
-								}}
-							>
-								{item.icon && <ListItemIcon sx={{ minWidth: 40 }}>{item.icon}</ListItemIcon>}
-								<ListItemText
-									primary={item.title}
-									primaryTypographyProps={{
-										fontSize: '0.875rem',
-										fontWeight: isSelected ? 600 : 500,
-										color: isSelected ? 'primary.main' : 'text.primary'
+										justifyContent: open ? 'flex-start' : 'center',
+										bgcolor: isSelected ? 'action.selected' : 'transparent',
 									}}
-								/>
-								{item.chip && (
-									<Chip
-										label={item.chip.label}
-										color={item.chip.color}
-										size="small"
-										sx={{ ml: 1, height: 20 }}
-									/>
-								)}
+								>
+									{item.icon && <ListItemIcon 
+									sx={{
+										minWidth: open ? 40 : 'auto',
+										mr: open ? 'auto' : 0,
+										justifyContent: 'center'
+									}}>{item.icon}</ListItemIcon>}
+									{open && (
+										<>
+											<ListItemText
+												primary={item.title}
+												sx={{
+													fontSize: '0.5rem',
+													fontWeight: isSelected ? 600 : 500,
+													color: isSelected ? 'primary.main' : 'text.primary'
+												}}
+											/>
+											{item.chip && (
+												<Chip
+													label={item.chip.label}
+													color={item.chip.color}
+													size="small"
+													sx={{ ml: 1, height: 20 }}
+												/>
+											)}
+										</>
+									)}
 							</ListItemButton>
 						)}
 					</ListItem>
 
-					{/* 子菜单 */}
-					{hasChildren && (
-						<Collapse in={isOpen} timeout="auto" unmountOnExit>
+					{hasChildren && open && (
+						<Collapse in={isMenuOpen} timeout="auto" unmountOnExit>
 							<List disablePadding>
 								{item.children?.map((child, childIndex) => {
 									const isChildSelected = child.path && pathname === child.path;
-
 									return (
 										<ListItem key={`${child.title}-${childIndex}`} disablePadding>
 											<ListItemButton
@@ -283,7 +316,7 @@ export default function DashboardAside({
 											>
 												<ListItemText
 													primary={child.title}
-													primaryTypographyProps={{
+													sx={{
 														fontSize: '0.8125rem',
 														fontWeight: isChildSelected ? 600 : 400,
 														color: isChildSelected ? 'primary.main' : 'text.primary'
@@ -310,74 +343,83 @@ export default function DashboardAside({
 	};
 
 	const drawer = (
-		<Box sx={{ overflowY: 'auto', height: '100%' }}>
+		<Box
+			sx={{
+				overflowY: 'auto',
+				height: '100%',
+				width: open ? drawerWidth : collapsedDrawerWidth,
+				transition: theme.transitions.create('width', {
+					easing: theme.transitions.easing.sharp,
+					duration: theme.transitions.duration.enteringScreen,
+				})
+			}}
+		>
 			<Box sx={{
-				p: 3,
+				p: open ? 3 : 2,
 				display: 'flex',
-				alignItems: 'center',
-				justifyContent: 'center',
-				borderBottom: `1px solid ${theme.palette.divider}`
+				alignItems: 'center', // Keep both versions vertically centered
+				justifyContent: open ? 'space-between' : 'center',
+				minHeight: 64,
 			}}>
-				<Typography variant="h6" fontWeight={700} color="primary.main">
-					ADMIN PANEL
-				</Typography>
+				{open ? (
+					<>
+						<Typography variant="h6" fontWeight={700} color="primary.main">
+							Dashboard
+						</Typography>
+						<IconButton onClick={toggleSidebar}>
+							<ChevronLeftIcon />
+						</IconButton>
+					</>
+				) : (
+					<>
+						<Box sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+							gap: 1
+						}}>
+							<Typography variant="h6" fontWeight={700} color="primary.main">
+								D
+							</Typography>
+							<IconButton onClick={toggleSidebar}>
+								<MenuIcon />
+							</IconButton>
+						</Box>
+					</>
+				)}
 			</Box>
-
 			<Box sx={{ mt: 1 }}>
 				{menuSections.map((section, index) => (
 					<div key={`section-${index}`}>
-						<MenuSectionTitle>{section.title}</MenuSectionTitle>
+						<MenuSectionTitle open={open}>{section.title}</MenuSectionTitle>
 						<List disablePadding>
 							{renderMenuItems(section.items)}
 						</List>
-						{index < menuSections.length - 1 && (
-							<Divider sx={{ my: 1 }} />
-						)}
 					</div>
 				))}
 			</Box>
 		</Box>
 	);
 
-	// 如果是固定抽屉或持久化抽屉
-	if (variant === 'permanent' || variant === 'persistent') {
-		return (
-			<Drawer
-				variant={variant}
-				open={open}
-				sx={{
-					width: drawerWidth,
-					flexShrink: 0,
-					'& .MuiDrawer-paper': {
-						width: drawerWidth,
-						boxSizing: 'border-box',
-						border: 'none',
-						boxShadow: theme.shadows[4],
-						bgcolor: 'background.paper'
-					},
-				}}
-			>
-				{drawer}
-			</Drawer>
-		);
-	}
 
-	// 否则是临时抽屉
 	return (
 		<Drawer
-			variant="temporary"
-			open={open}
-			onClose={onClose}
-			ModalProps={{
-				keepMounted: true, // 为了更好的移动端性能
-			}}
+			variant={drawerVariant}
+			open={open} 
+			onClose={handleClose}
 			sx={{
+				width: open ? drawerWidth : collapsedDrawerWidth,
+				flexShrink: 0,
 				'& .MuiDrawer-paper': {
-					width: drawerWidth,
+					width: open ? drawerWidth : collapsedDrawerWidth,
 					boxSizing: 'border-box',
 					border: 'none',
-					boxShadow: theme.shadows[4],
-					bgcolor: 'background.paper'
+					bgcolor: 'background.paper',
+					overflowX: 'hidden',
+					transition: theme.transitions.create('width', {
+						easing: theme.transitions.easing.sharp,
+						duration: theme.transitions.duration.enteringScreen,
+					}),
 				},
 			}}
 		>

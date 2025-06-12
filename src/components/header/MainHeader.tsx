@@ -6,7 +6,7 @@ export default function MainHeader() {
 		{ label: 'Home', path: '/' },
 		{ label: 'About', path: '/about' },
 		{ label: 'Services', path: '/services' },
-		{ label: 'Contact', path: '/contact' },
+		{ label: 'Dashboard', path: '/dashboard' },
 	];
 
 	//TODO Change UI
@@ -56,7 +56,6 @@ export default function MainHeader() {
 							))}
 						</Box>
 
-						{/* 右侧登录按钮 */}
 						<Button
 							variant="contained"
 							component={Link}
