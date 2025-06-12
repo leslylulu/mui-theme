@@ -27,19 +27,27 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  main,
+  account,
+  dashboard
 }: Readonly<{
   children: React.ReactNode;
+  main: React.ReactNode;
+  account?: React.ReactNode;
+  dashboard?: React.ReactNode;
 }>) {
   return (
     <html lang="en" className={`${poppins.variable} ${roboto.variable}`}>
-      <body
-        className={`antialiased`}
+      <body className={`antialiased`}
       >
         { /* This is where the CSS variables are injected by MUI */}
+        {/* enableCssLayer is a boolean that determines whether the CSS layer is enabled */}
+
         <AppRouterCacheProvider options={{ key: 'lu' }}>
-          {/* enableCssLayer is a boolean that determines whether the CSS layer is enabled */}
           <ThemeProvider theme={theme}>
-            {children}
+            {main}
+            {account}
+            {dashboard}
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
