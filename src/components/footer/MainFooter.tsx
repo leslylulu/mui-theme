@@ -6,7 +6,6 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import AppleIcon from '@mui/icons-material/Apple';
 import NextLink from 'next/link';
 
 export default function MainFooter() {
@@ -14,7 +13,7 @@ export default function MainFooter() {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Services', href: '/services' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Dashboard', href: '/dashboard' },
   ];
 
   const legalLinks = [
@@ -29,10 +28,7 @@ export default function MainFooter() {
       sx={{
         bgcolor: '#1c1c1e',
         color: '#fff',
-        borderTopLeftRadius: 24,
-        borderTopRightRadius: 24,
         overflow: 'hidden',
-        boxShadow: '0 -5px 20px rgba(0,0,0,0.1)',
         position: 'relative',
         backdropFilter: 'blur(10px)',
         mt: 'auto',
@@ -49,7 +45,7 @@ export default function MainFooter() {
       />
 
       <Container
-        maxWidth="md"
+        maxWidth="lg"
         sx={{
           position: 'relative',
           zIndex: 1,
@@ -63,8 +59,8 @@ export default function MainFooter() {
       >
         <Grid
           container
-          spacing={6}
-          justifyContent="center"
+          spacing={2}
+          justifyContent="space-between"
           alignItems="flex-start"
           sx={{ width: '100%' }}
         >
@@ -75,7 +71,7 @@ export default function MainFooter() {
               </Typography>
             </Stack>
             <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)', mb: 2 }}>
-              Creating amazing experiences with attention to detail and quality that you expect.
+              Creating amazing experiences.
             </Typography>
             <Stack direction="row" spacing={2}>
               {[TwitterIcon, FacebookIcon, InstagramIcon, LinkedInIcon].map((Icon, idx) => (

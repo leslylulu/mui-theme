@@ -1,68 +1,100 @@
+'use client';
+
 import { AppBar, Toolbar, Typography, Button, Box, Container, Stack } from '@mui/material';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useTheme } from '@mui/material/styles';
 
 export default function MainHeader() {
+	const theme = useTheme();
+	const pathname = usePathname();
+
 	const menuItems = [
-		{ label: 'Home', path: '/' },
 		{ label: 'About', path: '/about' },
-		{ label: 'Services', path: '/services' },
 		{ label: 'Dashboard', path: '/dashboard' },
+		{ label: 'E-commerce', path: '/e-commerce' },
 	];
 
-	//TODO Change UI
 	return (
-		<AppBar position="static" color="primary" elevation={0} sx={{ backgroundColor: 'white' }}>
+		<AppBar
+			position="sticky"
+			elevation={0}
+			sx={{
+				backgroundColor: 'black',
+				color: 'white',
+				borderBottom: `1px solid ${theme.palette.divider}`,
+				py: 1,
+			}}
+		>
 			<Container maxWidth="lg">
-				<Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'center', py: 1 }}>
+				<Toolbar
+					disableGutters
+					sx={{
+						display: 'flex',
+						justifyContent: 'space-between',
+						py: 1.5
+					}}
+				>
+					<Typography
+						variant="h5"
+						component={Link}
+						href="/"
+						sx={{
+							fontWeight: 700,
+							textDecoration: 'none',
+							letterSpacing: 1,
+						}}
+					>
+						Lulu
+					</Typography>
+
 					<Stack
 						direction="row"
-						spacing={4}
+						spacing={2}
 						alignItems="center"
-						justifyContent="center"
 					>
-						<Typography
-							variant="h6"
-							component={Link}
-							href="/"
-							sx={{
-								fontWeight: 700,
-								textDecoration: 'none',
-								color: 'primary.main',
-								letterSpacing: 1,
-							}}
-						>
-							Lulu
-						</Typography>
-
-						<Box sx={{ display: 'flex', gap: 3 }}>
-							{menuItems.map((item) => (
-								<Button
-									key={item.path}
-									color="inherit"
-									component={Link}
-									href={item.path}
-									sx={{
-										color: 'text.primary',
-										textTransform: 'none',
-										fontWeight: 500,
-										'&:hover': {
-											backgroundColor: 'transparent',
-											color: 'primary.main'
-										}
-									}}
-								>
-									{item.label}
-								</Button>
-							))}
+						<Box sx={{
+							display: 'flex',
+							gap: 1,
+						}}>
+							{menuItems.map((item) => {
+								const isSelected = pathname === item.path;
+								return (
+									<Button
+										key={item.path}
+										component={Link}
+										href={item.path}
+										sx={{
+											borderRadius: 16,
+											px: 2,
+											py: 1,
+											textTransform: 'none',
+											fontSize: '1rem',
+											fontWeight: 400,
+											color: isSelected ? '#aa89cf' : 'white',
+											'&:hover': {
+												backgroundColor: 'primary.dark',
+											}
+										}}
+									>
+										{item.label}
+									</Button>
+								);
+							})}
 						</Box>
 
 						<Button
 							variant="contained"
 							component={Link}
-							href="/account/login"
+							href="/login"
 							sx={{
-								borderRadius: 28,
-								px: 3
+								borderRadius: 24,
+								px: 4,
+								py: 1.2,
+								bgcolor: 'white',
+								color: '#002211',
+								fontWeight: 600,
+								fontSize: '0.95rem',
 							}}
 						>
 							Login

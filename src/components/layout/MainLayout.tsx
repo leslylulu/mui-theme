@@ -15,16 +15,9 @@ export default function MainLayout({
 			minHeight: '100vh'
 		}}>
 			<MainHeader />
-			<Container
-				component="main"
-				maxWidth="lg"
-				sx={{
-					py: 4,
-					flex: '1 0 auto'
-				}}
-			>
+			<main>
 				{children}
-			</Container>
+			</main>
 			<MainFooter />
 		</Box>
 	);
