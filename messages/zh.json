@@ -1,0 +1,66 @@
+{
+	"main": {
+		"title": "欢迎使用三种布局",
+		"subtitle": "使用我们的现代设计系统创建精美界面",
+		"getStarted": "开始使用",
+		"learnMore": "了解更多",
+		"features": {
+			"title": "核心特点",
+			"responsive": "完全响应式",
+			"customizable": "高度可定制",
+			"performance": "性能优化",
+			"accessibility": "无障碍优先"
+		},
+		"sections": {
+			"hero": "主视觉区",
+			"about": "关于我们",
+			"services": "我们的服务",
+			"portfolio": "作品集",
+			"testimonials": "客户评价",
+			"contact": "联系我们"
+		}
+	},
+	"About": {
+		"welcome": "这个是关于我们的页面！"
+	},
+	"MainHeader": {
+		"brand": "Lulu",
+		"about": "关于",
+		"dashboard": "仪表盘",
+		"ecommerce": "电子商务",
+		"login": "登录",
+		"languages": {
+			"english": "英语",
+			"chinese": "中文",
+			"french": "法语"
+		},
+		"menu": {
+			"account": "账户",
+			"settings": "设置",
+			"logout": "退出"
+		},
+		"search": "搜索...",
+		"notifications": "通知",
+		"welcome": "欢迎"
+	},
+	"footer": {
+		"company": "璐璐",
+		"slogan": "创造非凡体验。",
+		"quickLinks": "快速链接",
+		"contactUs": "联系我们",
+		"address": "设计街222号",
+		"city": "旧金山，加利福尼亚 12345",
+		"email": "info@example.com",
+		"phone": "+1 (555) 123-000",
+		"copyright": "© {year} 您的公司。保留所有权利。",
+		"links": {
+			"home": "首页",
+			"about": "关于",
+			"services": "服务",
+			"dashboard": "仪表盘",
+			"privacy": "隐私政策",
+			"terms": "服务条款",
+			"cookies": "Cookie政策"
+		}
+	}
+}

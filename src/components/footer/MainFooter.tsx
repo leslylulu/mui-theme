@@ -1,7 +1,7 @@
 'use client'
 
 import { Box, Container, Typography, Link, Stack, Divider, IconButton } from '@mui/material';
-import Grid from '@mui/material/Grid'; // 注意这里导入 Grid v2
+import Grid from '@mui/material/Grid';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';

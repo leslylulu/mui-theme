@@ -1,19 +1,51 @@
 'use client';
 
-import { AppBar, Toolbar, Typography, Button, Box, Container, Stack } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box, Container, Stack, IconButton, Menu, MenuItem } from '@mui/material';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useTheme } from '@mui/material/styles';
+import { useState } from 'react';
+import TranslateIcon from '@mui/icons-material/Translate';
+import Cookies from 'js-cookie';
+import { useLocale, useTranslations } from 'next-intl'; 
 
 export default function MainHeader() {
 	const theme = useTheme();
 	const pathname = usePathname();
+	const router = useRouter();
+	const locale = useLocale(); 
+	const t = useTranslations('MainHeader'); 
+
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const open = Boolean(anchorEl);
 
 	const menuItems = [
-		{ label: 'About', path: '/about' },
-		{ label: 'Dashboard', path: '/dashboard' },
-		{ label: 'E-commerce', path: '/e-commerce' },
+		{ label: t('about'), path: '/about' },
+		{ label: t('dashboard'), path: '/dashboard' },
+		{ label: t('ecommerce'), path: '/e-commerce' },
 	];
+
+	const languages = [
+		{ code: 'en', label: t('languages.english') },
+		{ code: 'zh', label: t('languages.chinese') },
+		{ code: 'fr', label: t('languages.french') }
+	];
+
+	const handleLanguageClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handleLanguageClose = () => {
+		setAnchorEl(null);
+	};
+
+	const handleLanguageChange = (languageCode: string) => {
+		Cookies.set('NEXT_LOCALE', languageCode, { expires: 365 });
+
+		handleLanguageClose();
+
+		window.location.reload();
+	};
 
 	return (
 		<AppBar
@@ -45,7 +77,7 @@ export default function MainHeader() {
 							letterSpacing: 1,
 						}}
 					>
-						Lulu
+						{t('brand')}
 					</Typography>
 
 					<Stack
@@ -83,6 +115,52 @@ export default function MainHeader() {
 							})}
 						</Box>
 
+						<IconButton
+							onClick={handleLanguageClick}
+							color="inherit"
+							sx={{
+								border: '1px solid rgba(255, 255, 255, 0.3)',
+								borderRadius: '50%',
+								width: 40,
+								height: 40
+							}}
+							aria-controls={open ? "language-menu" : undefined}
+							aria-haspopup="true"
+							aria-expanded={open ? "true" : undefined}
+						>
+							<TranslateIcon />
+						</IconButton>
+
+						<Menu
+							id="language-menu"
+							anchorEl={anchorEl}
+							open={open}
+							onClose={handleLanguageClose}
+							MenuListProps={{
+								'aria-labelledby': 'language-button',
+							}}
+							PaperProps={{
+								sx: {
+									mt: 1.5,
+									boxShadow: '0 4px 20px rgba(0,0,0,0.15)'
+								}
+							}}
+						>
+							{languages.map((lang) => (
+								<MenuItem
+									key={lang.code}
+									onClick={() => handleLanguageChange(lang.code)}
+									selected={locale === lang.code}
+									sx={{
+										minWidth: 120,
+										fontWeight: locale === lang.code ? 600 : 400
+									}}
+								>
+									{lang.label}
+								</MenuItem>
+							))}
+						</Menu>
+
 						<Button
 							variant="contained"
 							component={Link}
@@ -97,7 +175,7 @@ export default function MainHeader() {
 								fontSize: '0.95rem',
 							}}
 						>
-							Login
+							{t('login')}
 						</Button>
 					</Stack>
 				</Toolbar>

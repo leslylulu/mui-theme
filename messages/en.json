@@ -1,0 +1,66 @@
+{
+	"main": {
+		"title": "Welcome to 3 Layouts",
+		"subtitle": "Create stunning interfaces with our modern design system",
+		"getStarted": "Get Started",
+		"learnMore": "Learn More",
+		"features": {
+			"title": "Key Features",
+			"responsive": "Fully Responsive",
+			"customizable": "Highly Customizable",
+			"performance": "Optimized Performance",
+			"accessibility": "Accessibility First"
+		},
+		"sections": {
+			"hero": "Hero Section",
+			"about": "About Section",
+			"services": "Our Services",
+			"portfolio": "Portfolio",
+			"testimonials": "Client Testimonials",
+			"contact": "Contact Us"
+		}
+	},
+	"MainHeader": {
+		"brand": "Lulu",
+		"about": "About",
+		"dashboard": "Dashboard",
+		"ecommerce": "E-commerce",
+		"login": "Login",
+		"languages": {
+			"english": "English",
+			"chinese": "中文",
+			"french": "Français"
+		},
+		"menu": {
+			"account": "Account",
+			"settings": "Settings",
+			"logout": "Logout"
+		},
+		"search": "Search...",
+		"notifications": "Notifications",
+		"welcome": "Welcome"
+	},
+	"About": {
+		"welcome": "This is About Us page"
+	},
+	"footer": {
+		"company": "Lulu",
+		"slogan": "Creating amazing experiences.",
+		"quickLinks": "Quick Links",
+		"contactUs": "Contact Us",
+		"address": "222 Design Street",
+		"city": "San Francisco, CA 12345",
+		"email": "info@example.com",
+		"phone": "+1 (555) 123-000",
+		"copyright": "© {year} Your Company. All rights reserved.",
+		"links": {
+			"home": "Home",
+			"about": "About",
+			"services": "Services",
+			"dashboard": "Dashboard",
+			"privacy": "Privacy Policy",
+			"terms": "Terms of Service",
+			"cookies": "Cookie Policy"
+		}
+	}
+}

@@ -1,0 +1,66 @@
+{
+	"main": {
+		"title": "Bienvenue aux 3 Layouts",
+		"subtitle": "Créez des interfaces magnifiques avec notre système de conception moderne",
+		"getStarted": "Commencer",
+		"learnMore": "En savoir plus",
+		"features": {
+			"title": "Caractéristiques Principales",
+			"responsive": "Entièrement Responsive",
+			"customizable": "Hautement Personnalisable",
+			"performance": "Performances Optimisées",
+			"accessibility": "Accessibilité Prioritaire"
+		},
+		"sections": {
+			"hero": "Section Héro",
+			"about": "À propos",
+			"services": "Nos Services",
+			"portfolio": "Portfolio",
+			"testimonials": "Témoignages de Clients",
+			"contact": "Contactez-nous"
+		}
+	},
+	"About": {
+		"welcome": "This is About Us page"
+	},
+	"MainHeader": {
+		"brand": "Lulu",
+		"about": "À propos",
+		"dashboard": "Tableau de bord",
+		"ecommerce": "Commerce électronique",
+		"login": "Connexion",
+		"languages": {
+			"english": "Anglais",
+			"chinese": "Chinois",
+			"french": "Français"
+		},
+		"menu": {
+			"account": "Compte",
+			"settings": "Paramètres",
+			"logout": "Déconnexion"
+		},
+		"search": "Rechercher...",
+		"notifications": "Notifications",
+		"welcome": "Bienvenue"
+	},
+	"footer": {
+		"company": "Lulu",
+		"slogan": "Créer des expériences incroyables.",
+		"quickLinks": "Liens Rapides",
+		"contactUs": "Contactez-nous",
+		"address": "222 Rue du Design",
+		"city": "San Francisco, CA 12345",
+		"email": "info@example.com",
+		"phone": "+1 (555) 123-000",
+		"copyright": "© {year} Votre Entreprise. Tous droits réservés.",
+		"links": {
+			"home": "Accueil",
+			"about": "À propos",
+			"services": "Services",
+			"dashboard": "Tableau de bord",
+			"privacy": "Politique de confidentialité",
+			"terms": "Conditions d'utilisation",
+			"cookies": "Politique des cookies"
+		}
+	}
+}
