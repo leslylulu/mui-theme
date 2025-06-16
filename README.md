@@ -1,5 +1,47 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Tech stack
++ Framework: Next.js 14+ with App Router
++ UI Library: Material UI v5
++ Styling: Emotion (MUI's styling solution)
++ Internationalization: next-intl
++ Typography: Roboto & Poppins via Google Fonts
+
+## Features
+### 🌐 Internationalization
++ Complete multi-language support (English, Chinese, French)
++ Language switching without URL changes
++ Translation files stored in messages directory
++ Cookie-based language preferences
+
+## Layout Options
+This project includes three flexible layout options:
+
++ Main Layout: Full-width header and footer with a clean content area
++ Dashboard Layout: Sidebar navigation with collapsible menu
++ Auth Layout: User login and registration pages
+
+## Project Structure
+```
+├── app/
+│   ├── (mainLayout)/      # Routes using the main layout
+│   │   └── page.tsx       # Entry page (redirects to mainLayout)
+│   ├── (dashboardLayout)/ # Routes using the dashboard layout
+│   ├── (authLayout)/      # Routes using the auth layout
+│   ├── layout.tsx         # Root layout with providers
+├── components/
+│   ├── header/            # Header components
+│   ├── footer/            # Footer components
+│   ├── layout/            # Layout components
+├── messages/              # Translation files
+│   ├── en.json           # English translations
+│   ├── zh.json           # Chinese translations
+│   └── fr.json           # French translations
+├── public/               # Static assets
+├── i18n/                 # i18n configuration
+├── middleware.ts         # Next.js middleware (handles i18n)
+└── theme/               # MUI theme configuration
+```
 ## Getting Started
 
 First, run the development server:

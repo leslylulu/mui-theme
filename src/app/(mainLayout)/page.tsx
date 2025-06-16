@@ -39,7 +39,7 @@ export default async function MainPage() {
 			>
 				<Grid item xs={12} md={6}>
 					<Box>
-						<Typography variant="h2" component="h1" fontWeight={700} gutterBottom>
+						<Typography variant="h2" component="h1" fontWeight={400} gutterBottom>
 							{t('title')}
 						</Typography>
 						<Typography variant="h5"
