@@ -24,7 +24,7 @@ export default async function MainPage() {
 					left: 0,
 					width: "100%",
 					height: "100%",
-					backgroundColor: "rgba(0, 0, 0, 0.1)",
+					backgroundColor: "rgba(255, 255, 255, 0.3)",
 					zIndex: 1,
 				}
 			}}
@@ -78,6 +78,8 @@ export default async function MainPage() {
 									textTransform: "none",
 									fontSize: "1rem",
 									borderColor: "black",
+									backgroundColor: "rgba(255, 255, 255, 0.1)",
+									backdropFilter: "blur(1px)",
 									"&:hover": {
 										borderColor: "black",
 										backgroundColor: "rgba(255, 255, 255, 0.2)"
