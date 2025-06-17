@@ -1,28 +1,60 @@
 'use client';
 
-import { AppBar, Toolbar, Typography, Button, Box, Container, Stack, IconButton, Menu, MenuItem } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box, Container, Stack, IconButton, Menu, MenuItem, Divider, ListItemText } from '@mui/material';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
 import TranslateIcon from '@mui/icons-material/Translate';
 import Cookies from 'js-cookie';
-import { useLocale, useTranslations } from 'next-intl'; 
+import { useLocale, useTranslations } from 'next-intl';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+// Import section icons
+import BusinessIcon from '@mui/icons-material/Business';
+import WorkIcon from '@mui/icons-material/Work';
+import PeopleIcon from '@mui/icons-material/People';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
 
 export default function MainHeader() {
 	const theme = useTheme();
 	const pathname = usePathname();
-	const router = useRouter();
-	const locale = useLocale(); 
-	const t = useTranslations('MainHeader'); 
+	const locale = useLocale();
+	const t = useTranslations('MainHeader');
 
-	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-	const open = Boolean(anchorEl);
+	const [languageAnchorEl, setLanguageAnchorEl] = useState<null | HTMLElement>(null);
+	const [aboutAnchorEl, setAboutAnchorEl] = useState<null | HTMLElement>(null);
+
+	const languageMenuOpen = Boolean(languageAnchorEl);
+	const aboutMenuOpen = Boolean(aboutAnchorEl);
 
 	const menuItems = [
 		{ label: t('about'), path: '/about' },
 		{ label: t('dashboard'), path: '/dashboard' },
 		{ label: t('ecommerce'), path: '/e-commerce' },
+	];
+
+	const aboutMenu = [
+		{
+			section: 'About the Company',
+			icon: <BusinessIcon sx={{ color: theme.palette.primary.main }} />,
+			links: ['Who We Are', 'History'],
+		},
+		{
+			section: 'Careers',
+			icon: <WorkIcon sx={{ color: theme.palette.primary.main }} />,
+			links: ['Job Openings', 'Internships'],
+		},
+		{
+			section: 'Clients',
+			icon: <PeopleIcon sx={{ color: theme.palette.primary.main }} />,
+			links: ['Our Partners', 'Testimonials'],
+		},
+		{
+			section: 'Values',
+			icon: <LightbulbIcon sx={{ color: theme.palette.primary.main }} />,
+			links: ['Mission', 'Vision'],
+		}
 	];
 
 	const languages = [
@@ -32,18 +64,24 @@ export default function MainHeader() {
 	];
 
 	const handleLanguageClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-		setAnchorEl(event.currentTarget);
+		setLanguageAnchorEl(event.currentTarget);
 	};
 
 	const handleLanguageClose = () => {
-		setAnchorEl(null);
+		setLanguageAnchorEl(null);
+	};
+
+	const handleAboutClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setAboutAnchorEl(event.currentTarget);
+	};
+
+	const handleAboutClose = () => {
+		setAboutAnchorEl(null);
 	};
 
 	const handleLanguageChange = (languageCode: string) => {
 		Cookies.set('NEXT_LOCALE', languageCode, { expires: 365 });
-
 		handleLanguageClose();
-
 		window.location.reload();
 	};
 
@@ -75,6 +113,7 @@ export default function MainHeader() {
 							fontWeight: 700,
 							textDecoration: 'none',
 							letterSpacing: 1,
+							color: 'inherit'
 						}}
 					>
 						{t('brand')}
@@ -82,30 +121,133 @@ export default function MainHeader() {
 
 					<Stack
 						direction="row"
-						spacing={2}
+						spacing={1}
 						alignItems="center"
 					>
-						<Box sx={{
-							display: 'flex',
-							gap: 1,
-						}}>
-							{menuItems.map((item) => {
-								const isSelected = pathname === item.path;
+						<Box sx={{ display: 'flex', alignItems: 'center' }}>
+							{menuItems.map((item, index) => {
+								// Special handling for About menu item
+								if (item.label === t('about')) {
+									return (
+										<Box key={index}>
+											<Button
+												onClick={handleAboutClick}
+												endIcon={<ExpandMoreIcon />}
+												sx={{
+													borderRadius: 16,
+													px: 2,
+													py: 1,
+													mx: 0.5,
+													textTransform: 'none',
+													fontSize: '1rem',
+													fontWeight: 500,
+													color: 'white',
+													backgroundColor: pathname === item.path ? 'rgba(255,255,255,0.1)' : 'transparent',
+													'&:hover': {
+														backgroundColor: 'rgba(255,255,255,0.1)',
+													}
+												}}
+											>
+												{item.label}
+											</Button>
+
+											<Menu
+												anchorEl={aboutAnchorEl}
+												open={aboutMenuOpen}
+												onClose={handleAboutClose}
+												slotProps={{
+													paper: {
+														elevation: 12,
+														sx: {
+															borderRadius: 2,
+															p: 2,
+															minWidth: 800,
+															boxShadow: '0 0 30px rgba(0,0,0,0.12)',
+														}
+													}
+												}}
+											>
+												<Box sx={{
+													display: "grid",
+													gridTemplateColumns: "repeat(2, 1fr)",
+													gap: 3,
+												}}>
+													{aboutMenu.map((section, idx) => (
+														<Box
+															key={section.section}
+														>
+															<Box sx={{
+																p: 2,
+																display: 'flex',
+																alignItems: 'center',
+																gap: 1.5,
+																borderBottom: `1px solid ${theme.palette.divider}`,
+															}}>
+																{section.icon}
+																<Typography
+																	variant="subtitle1"
+																	sx={{
+																		fontWeight: 600,
+																	}}
+																>
+																	{section.section}
+																</Typography>
+															</Box>
+
+															<Box>
+																{section.links.map((label, linkIdx) => (
+																	<MenuItem
+																		key={linkIdx}
+																		onClick={handleAboutClose}
+																		component={Link}
+																		href={`/`}
+																		sx={{
+																			py: 1,
+																			px: 2,
+																			'&:hover': {
+																				color: 'primary.main',
+																				bgcolor: 'transparent',
+																			},
+																		}}
+																	>
+																		<ListItemText
+																			primary={label}
+																			slotProps={{
+																				primary: {
+																					sx: {
+																						fontSize: '0.95rem',
+																						fontWeight: 500,
+																					}
+																				}
+																			}}
+																		/>
+																	</MenuItem>
+																))}
+															</Box>
+														</Box>
+													))}
+												</Box>
+											</Menu>
+										</Box>
+									);
+								}
 								return (
 									<Button
-										key={item.path}
+										key={index}
 										component={Link}
 										href={item.path}
 										sx={{
 											borderRadius: 16,
 											px: 2,
 											py: 1,
+											mx: 0.5,
 											textTransform: 'none',
 											fontSize: '1rem',
-											fontWeight: 400,
-											color: isSelected ? '#aa89cf' : 'white',
+											fontWeight: 500,
+											color: 'white',
+											backgroundColor: pathname === item.path ? 'rgba(255,255,255,0.1)' : 'transparent',
 											'&:hover': {
-												backgroundColor: 'primary.dark',
+												backgroundColor: 'rgba(255,255,255,0.1)',
 											}
 										}}
 									>
@@ -115,6 +257,9 @@ export default function MainHeader() {
 							})}
 						</Box>
 
+						<Divider orientation="vertical" flexItem sx={{ mx: 1, bgcolor: 'rgba(255,255,255,0.2)' }} />
+
+						{/* Language selector button */}
 						<IconButton
 							onClick={handleLanguageClick}
 							color="inherit"
@@ -124,17 +269,18 @@ export default function MainHeader() {
 								width: 40,
 								height: 40
 							}}
-							aria-controls={open ? "language-menu" : undefined}
+							aria-controls={languageMenuOpen ? "language-menu" : undefined}
 							aria-haspopup="true"
-							aria-expanded={open ? "true" : undefined}
+							aria-expanded={languageMenuOpen ? "true" : undefined}
 						>
 							<TranslateIcon />
 						</IconButton>
 
+						{/* Language dropdown menu */}
 						<Menu
 							id="language-menu"
-							anchorEl={anchorEl}
-							open={open}
+							anchorEl={languageAnchorEl}
+							open={languageMenuOpen}
 							onClose={handleLanguageClose}
 							MenuListProps={{
 								'aria-labelledby': 'language-button',
@@ -161,6 +307,7 @@ export default function MainHeader() {
 							))}
 						</Menu>
 
+						{/* Login button */}
 						<Button
 							variant="contained"
 							component={Link}
