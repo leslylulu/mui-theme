@@ -4,7 +4,6 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { Roboto, Poppins } from "next/font/google";
 import { ThemeProvider } from "@mui/material/styles";
 import { getLocale } from 'next-intl/server';
-import { notFound } from "next/navigation";
 
 import theme from "../theme/theme";
 
