@@ -184,7 +184,7 @@ export default function MainHeader() {
 													gridTemplateColumns: "repeat(2, 1fr)",
 													gap: 3,
 												}}>
-													{aboutMenu.map((section, idx) => (
+													{aboutMenu.map((section) => (
 														<Box
 															key={section.section}
 														>

@@ -1,6 +1,5 @@
-import { Box, Card, Typography, Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Box, Card, Typography, Divider, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
-// 示例数据
 const basicData = [
 	{ id: 1, name: 'John Doe', email: 'john@example.com', role: 'Developer', status: 'Active' },
 	{ id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'Designer', status: 'Active' },
@@ -9,7 +8,6 @@ const basicData = [
 	{ id: 5, name: 'Charlie Davis', email: 'charlie@example.com', role: 'Marketing', status: 'Active' },
 ];
 
-// 产品数据
 const productData = [
 	{ id: 1, product: 'Laptop Pro', price: 1299, stock: 45, category: 'Electronics' },
 	{ id: 2, product: 'Wireless Mouse', price: 29.99, stock: 120, category: 'Accessories' },
@@ -18,7 +16,6 @@ const productData = [
 	{ id: 5, product: 'Headphones', price: 89.99, stock: 65, category: 'Audio' },
 ];
 
-// 订单数据
 const orderData = [
 	{ id: '#ORD-001', customer: 'John Doe', date: '2023-05-10', amount: 129.99, status: 'Delivered' },
 	{ id: '#ORD-002', customer: 'Jane Smith', date: '2023-05-11', amount: 299.50, status: 'Processing' },
@@ -87,7 +84,6 @@ export default function TableExamplesPage() {
 				</TableContainer>
 			</Card>
 
-			{/* 条纹表格 */}
 			<Card sx={{ mb: 6, overflow: 'hidden' }}>
 				<Box sx={{ p: 3, pb: 1 }}>
 					<Typography variant="h6">Striped Table</Typography>
@@ -128,7 +124,6 @@ export default function TableExamplesPage() {
 				</TableContainer>
 			</Card>
 
-			{/* 紧凑表格 */}
 			<Card sx={{ mb: 6, overflow: 'hidden' }}>
 				<Box sx={{ p: 3, pb: 1 }}>
 					<Typography variant="h6">Dense Table</Typography>
@@ -196,7 +191,6 @@ export default function TableExamplesPage() {
 				</TableContainer>
 			</Card>
 
-			{/* 卡片式表格 */}
 			<Box sx={{ mb: 6 }}>
 				<Typography variant="h6" sx={{ mb: 2 }}>
 					Card Tables
@@ -229,7 +223,6 @@ export default function TableExamplesPage() {
 				</Box>
 			</Box>
 
-			{/* 无边框表格 */}
 			<Card sx={{ mb: 6, overflow: 'hidden' }}>
 				<Box sx={{ p: 3, pb: 1 }}>
 					<Typography variant="h6">Borderless Table</Typography>

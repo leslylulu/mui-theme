@@ -78,7 +78,7 @@ const theme = createTheme({
 	components: {
 		MuiListItemButton: {
 			styleOverrides: {
-				root: ({ theme }) => ({
+				root: () => ({
 					'&.MuiButtonBase-root.MuiListItemButton-root': {
 						borderRadius: '24px',
 						margin: '0 8px',

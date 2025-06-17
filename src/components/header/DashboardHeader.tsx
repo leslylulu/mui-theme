@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import {
-	AppBar,
 	Toolbar,
 	Typography,
 	IconButton,
@@ -16,7 +15,6 @@ import {
 	useTheme,
 	Paper
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -33,7 +31,6 @@ interface DashboardHeaderProps {
 }
 
 export default function DashboardHeader({
-	onToggleSidebar,
 	onToggleTheme,
 	isDarkMode = false
 }: DashboardHeaderProps) {

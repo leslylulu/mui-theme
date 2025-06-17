@@ -3,23 +3,18 @@
 import DashboardAside from '@/components/aside/DashboardAside';
 import DashboardHeader from '@/components/header/DashboardHeader';
 import { useState } from 'react';
-import { Box, Toolbar } from '@mui/material';
+import { Box } from '@mui/material';
 
 const drawerWidth = 280;
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
 	const [sidebarOpen, setSidebarOpen] = useState(true);
 
 	const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
-	const drawerVariant = sidebarOpen ? 'permanent' : 'temporary';
 
 	return (
 		<Box sx={{ display: 'flex', width: '100%', height: '100vh', overflow: 'hidden' }}>
-			<DashboardAside
-				open={sidebarOpen}
-				onClose={() => setSidebarOpen(false)}
-				variant={drawerVariant}
-			/>
-
+			<DashboardAside/>
+			
 			<Box
 				sx={{
 					flexGrow: 1,

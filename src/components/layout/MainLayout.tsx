@@ -1,6 +1,6 @@
 import MainHeader from '../header/MainHeader';
 import MainFooter from '../footer/MainFooter';
-import { Box, Container } from '@mui/material';
+import { Box } from '@mui/material';
 
 export default function MainLayout({
 	children,
