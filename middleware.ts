@@ -1,9 +1,12 @@
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest } from 'next/server';
 
+const locales = ['en', 'zh', 'fr'];
+const defaultLocale = 'en';
+
 export default createMiddleware({
-	locales: ['en', 'zh', 'fr'],
-	defaultLocale: 'en',
+	locales,
+	defaultLocale,
 	localePrefix: 'never', 
 	localeDetection: true,
 });

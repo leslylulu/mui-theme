@@ -21,6 +21,8 @@ export default function MainHeader() {
 	const pathname = usePathname();
 	const locale = useLocale();
 	const t = useTranslations('MainHeader');
+	console.log('[Client] Current locale:', locale);
+	console.log('[Client] Translation for "brand" available:', Boolean(t('brand')));
 
 	const [languageAnchorEl, setLanguageAnchorEl] = useState<null | HTMLElement>(null);
 	const [aboutAnchorEl, setAboutAnchorEl] = useState<null | HTMLElement>(null);
@@ -92,7 +94,7 @@ export default function MainHeader() {
 	};
 
 	const handleLanguageChange = (languageCode: string) => {
-		Cookies.set('NEXT_LOCALE', languageCode, { expires: 365 });
+		Cookies.set('NEXT_LOCALE', languageCode, { expires: 365, path: '/', sameSite: 'lax' });
 		handleLanguageClose();
 		window.location.reload();
 	};
