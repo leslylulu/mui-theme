@@ -21,7 +21,8 @@
 		}
 	},
 	"About": {
-		"welcome": "这个是关于我们的页面！"
+		"welcome": "关于我们",
+		"description": "你好呀！👋 这个应用是我个人的一个练习项目，用来练习和探索现代前端架构。"
 	},
 	"MainHeader": {
 		"brand": "Lulu",

@@ -37,7 +37,7 @@ export default async function MainPage() {
 					px: { xs: 3, md: 8 }
 				}}
 			>
-				<Grid item xs={12} md={6}>
+				<Grid>
 					<Box>
 						<Typography variant="h2" component="h1" fontWeight={400} gutterBottom>
 							{t('title')}

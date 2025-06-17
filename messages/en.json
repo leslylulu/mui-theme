@@ -41,7 +41,8 @@
 		"welcome": "Welcome"
 	},
 	"About": {
-		"welcome": "This is About Us page"
+		"welcome": "ABOUT US",
+		"description": "Hi there! 👋 This app is a personal side project I’m using to practice and explore modern front-end architecture"
 	},
 	"footer": {
 		"company": "Lulu",

@@ -21,7 +21,8 @@
 		}
 	},
 	"About": {
-		"welcome": "This is About Us page"
+		"welcome": "À PROPOS DE NOUS",
+		"description": "Salut ! 👋 Cette application est un projet personnel que j'utilise pour m'exercer et explorer l'architecture front-end moderne."
 	},
 	"MainHeader": {
 		"brand": "Lulu",
