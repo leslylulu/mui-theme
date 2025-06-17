@@ -28,8 +28,30 @@
 		"login": "Login",
 		"languages": {
 			"english": "English",
-			"chinese": "中文",
-			"french": "Français"
+			"chinese": "Chinese",
+			"french": "French"
+		},
+		"aboutMenu": {
+			"company": {
+				"title": "About the Company",
+				"whoWeAre": "Who We Are",
+				"history": "History"
+			},
+			"careers": {
+				"title": "Careers",
+				"jobOpenings": "Job Openings",
+				"internships": "Internships"
+			},
+			"clients": {
+				"title": "Clients",
+				"partners": "Our Partners",
+				"testimonials": "Testimonials"
+			},
+			"values": {
+				"title": "Values",
+				"mission": "Mission",
+				"vision": "Vision"
+			}
 		},
 		"menu": {
 			"account": "Account",

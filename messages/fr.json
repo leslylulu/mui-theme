@@ -35,6 +35,28 @@
 			"chinese": "Chinois",
 			"french": "Français"
 		},
+		"aboutMenu": {
+			"company": {
+				"title": "À Propos de l'Entreprise",
+				"whoWeAre": "Qui Sommes-Nous",
+				"history": "Notre Histoire"
+			},
+			"careers": {
+				"title": "Carrières",
+				"jobOpenings": "Offres d'Emploi",
+				"internships": "Stages"
+			},
+			"clients": {
+				"title": "Clients",
+				"partners": "Nos Partenaires",
+				"testimonials": "Témoignages"
+			},
+			"values": {
+				"title": "Valeurs",
+				"mission": "Mission",
+				"vision": "Vision"
+			}
+		},
 		"menu": {
 			"account": "Compte",
 			"settings": "Paramètres",

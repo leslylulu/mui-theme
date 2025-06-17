@@ -36,24 +36,36 @@ export default function MainHeader() {
 
 	const aboutMenu = [
 		{
-			section: 'About the Company',
+			section: t('aboutMenu.company.title'),
 			icon: <BusinessIcon sx={{ color: theme.palette.primary.main }} />,
-			links: ['Who We Are', 'History'],
+			links: [
+				t('aboutMenu.company.whoWeAre'),
+				t('aboutMenu.company.history')
+			],
 		},
 		{
-			section: 'Careers',
+			section: t('aboutMenu.careers.title'),
 			icon: <WorkIcon sx={{ color: theme.palette.primary.main }} />,
-			links: ['Job Openings', 'Internships'],
+			links: [
+				t('aboutMenu.careers.jobOpenings'),
+				t('aboutMenu.careers.internships')
+			],
 		},
 		{
-			section: 'Clients',
+			section: t('aboutMenu.clients.title'),
 			icon: <PeopleIcon sx={{ color: theme.palette.primary.main }} />,
-			links: ['Our Partners', 'Testimonials'],
+			links: [
+				t('aboutMenu.clients.partners'),
+				t('aboutMenu.clients.testimonials')
+			],
 		},
 		{
-			section: 'Values',
+			section: t('aboutMenu.values.title'),
 			icon: <LightbulbIcon sx={{ color: theme.palette.primary.main }} />,
-			links: ['Mission', 'Vision'],
+			links: [
+				t('aboutMenu.values.mission'),
+				t('aboutMenu.values.vision')
+			],
 		}
 	];
 
@@ -216,7 +228,7 @@ export default function MainHeader() {
 																				primary: {
 																					sx: {
 																						fontSize: '0.95rem',
-																						fontWeight: 500,
+																						fontWeight: 'thin'
 																					}
 																				}
 																			}}

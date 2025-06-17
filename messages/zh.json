@@ -35,6 +35,28 @@
 			"chinese": "中文",
 			"french": "法语"
 		},
+		"aboutMenu": {
+			"company": {
+				"title": "关于公司",
+				"whoWeAre": "我们是谁",
+				"history": "公司历史"
+			},
+			"careers": {
+				"title": "招聘信息",
+				"jobOpenings": "工作机会",
+				"internships": "实习项目"
+			},
+			"clients": {
+				"title": "客户与伙伴",
+				"partners": "合作伙伴",
+				"testimonials": "客户评价"
+			},
+			"values": {
+				"title": "企业价值观",
+				"mission": "使命宣言",
+				"vision": "愿景展望"
+			}
+		},
 		"menu": {
 			"account": "账户",
 			"settings": "设置",
