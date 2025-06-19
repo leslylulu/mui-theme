@@ -3,22 +3,7 @@
 		"title": "Bienvenue aux 3 Layouts",
 		"subtitle": "Créez des interfaces magnifiques avec notre système de conception moderne",
 		"getStarted": "Commencer",
-		"learnMore": "En savoir plus",
-		"features": {
-			"title": "Caractéristiques Principales",
-			"responsive": "Entièrement Responsive",
-			"customizable": "Hautement Personnalisable",
-			"performance": "Performances Optimisées",
-			"accessibility": "Accessibilité Prioritaire"
-		},
-		"sections": {
-			"hero": "Section Héro",
-			"about": "À propos",
-			"services": "Nos Services",
-			"portfolio": "Portfolio",
-			"testimonials": "Témoignages de Clients",
-			"contact": "Contactez-nous"
-		}
+		"learnMore": "En savoir plus"
 	},
 	"About": {
 		"welcome": "À PROPOS DE NOUS",
@@ -85,5 +70,12 @@
 			"terms": "Conditions d'utilisation",
 			"cookies": "Politique des cookies"
 		}
+	},
+	"NotFound": {
+		"pageNotFound": "Page Non Trouvée",
+		"pageNotFoundDescription": "Désolé, la page que vous recherchez n'existe pas ou a été déplacée.",
+		"websiteUnderConstruction": "Site web en cours de construction",
+		"backToHome": "Retour à l'Accueil",
+		"contactSupport": "Contacter le Support"
 	}
 }

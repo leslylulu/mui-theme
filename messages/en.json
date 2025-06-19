@@ -3,22 +3,7 @@
 		"title": "Welcome to 3 Layouts",
 		"subtitle": "Create stunning interfaces with our modern design system",
 		"getStarted": "Get Started",
-		"learnMore": "Learn More",
-		"features": {
-			"title": "Key Features",
-			"responsive": "Fully Responsive",
-			"customizable": "Highly Customizable",
-			"performance": "Optimized Performance",
-			"accessibility": "Accessibility First"
-		},
-		"sections": {
-			"hero": "Hero Section",
-			"about": "About Section",
-			"services": "Our Services",
-			"portfolio": "Portfolio",
-			"testimonials": "Client Testimonials",
-			"contact": "Contact Us"
-		}
+		"learnMore": "Learn More"
 	},
 	"MainHeader": {
 		"brand": "Lulu",
@@ -85,5 +70,12 @@
 			"terms": "Terms of Service",
 			"cookies": "Cookie Policy"
 		}
+	},
+	"NotFound": {
+		"pageNotFound": "Page Not Found",
+		"pageNotFoundDescription": "Sorry, the page you are looking for doesn't exist or has been moved.",
+		"websiteUnderConstruction": "Website is currently under construction",
+		"backToHome": "Back to Home",
+		"contactSupport": "Contact Support"
 	}
 }

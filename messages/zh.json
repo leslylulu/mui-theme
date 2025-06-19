@@ -3,22 +3,7 @@
 		"title": "欢迎使用三种布局",
 		"subtitle": "使用我们的现代设计系统创建精美界面",
 		"getStarted": "开始使用",
-		"learnMore": "了解更多",
-		"features": {
-			"title": "核心特点",
-			"responsive": "完全响应式",
-			"customizable": "高度可定制",
-			"performance": "性能优化",
-			"accessibility": "无障碍优先"
-		},
-		"sections": {
-			"hero": "主视觉区",
-			"about": "关于我们",
-			"services": "我们的服务",
-			"portfolio": "作品集",
-			"testimonials": "客户评价",
-			"contact": "联系我们"
-		}
+		"learnMore": "了解更多"
 	},
 	"About": {
 		"welcome": "关于我们",
@@ -85,5 +70,12 @@
 			"terms": "服务条款",
 			"cookies": "Cookie政策"
 		}
+	},
+	"NotFound": {
+		"pageNotFound": "页面未找到",
+		"pageNotFoundDescription": "很抱歉，您查找的页面不存在或已被移动。",
+		"websiteUnderConstruction": "网站正在建设中",
+		"backToHome": "返回首页",
+		"contactSupport": "联系客服"
 	}
 }

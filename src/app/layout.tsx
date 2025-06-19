@@ -36,27 +36,23 @@ async function getMessages(locale: string) {
 }
 
 
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const locale = await getLocale();
-  const messages = await getMessages(locale);
+
   console.log('Current locale:', locale);
   console.log('Messages path:', `../messages/${locale}.json`);
-  console.log('Messages loaded:', messages ? 'Yes' : 'No');
-  console.log('Messages keys:', messages ? Object.keys(messages) : 'None');
   return (
     <html lang={locale} className={`${poppins.variable} ${roboto.variable}`}>
-      <body className={`antialiased`}
-      >
+      <body className={`antialiased`}>
         { /* This is where the CSS variables are injected by MUI */}
         {/* enableCssLayer is a boolean that determines whether the CSS layer is enabled */}
         <AppRouterCacheProvider options={{ key: 'lu' }}>
           <ThemeProvider theme={theme}>
-            <NextIntlClientProvider locale={locale} messages={messages}>
+            <NextIntlClientProvider>
               {children}
             </NextIntlClientProvider>
           </ThemeProvider>
